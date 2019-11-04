@@ -72,9 +72,18 @@ function draw() {
 	}
   
   // Detect collision with paddle
+  
+    for (let i = 0; i < poses.length; i++) {
+    // For each pose detected, loop through all the keypoints
+    let pose = poses[i].pose;
+    let nose = pose.nose;
+    // do something with nose.x and nose.y here
+    // print('nosex is', nose.x);
+    // print('nosey is', nose.y);
+  
   if ((xBall > xPaddle &&
-      xBall < xPaddle + paddleWidth) &&
-      (yBall + (diameter/2) >= yPaddle)) {
+      xBall < nose.x + paddleWidth) &&
+      (yBall + (diameter/2) >= nose.y)) {
     xBallChange *= -1;
     yBallChange *= -1;
     score++;
@@ -94,13 +103,7 @@ function draw() {
 
   
 // Draw paddle
-  for (let i = 0; i < poses.length; i++) {
-    // For each pose detected, loop through all the keypoints
-    let pose = poses[i].pose;
-    let nose = pose.nose;
-    // do something with nose.x and nose.y here
-    print('nosex is', nose.x);
-    print('nosey is', nose.y);
+
 
   
   fill(0, 255, 255);
