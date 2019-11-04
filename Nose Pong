@@ -94,24 +94,20 @@ function draw() {
 
   
 // Draw paddle
-  
-  // Loop through all the poses detected
   for (let i = 0; i < poses.length; i++) {
     // For each pose detected, loop through all the keypoints
     let pose = poses[i].pose;
-    for (let j = 0; j < pose.keypoints.length; j++) {
-      // A keypoint is an object describing a body part (like rightArm or leftShoulder)
-      let keypoint = pose.keypoints[j];
-    for (let x = 0; x < pose.keypoints.length; x++) {
-      // A keypoint is an object describing a body part (like rightArm or leftShoulder)
-      // let nose = keypoint.nose[x];
+    let nose = pose.nose;
+    // do something with nose.x and nose.y here
+    print('nosex is', nose.x);
+    print('nosey is', nose.y);
+
   
   fill(0, 255, 255);
   noStroke();
-  rect(xPaddle, yPaddle, paddleWidth, paddleHeight);
-    }
+  rectMode(CENTER);
+  rect(nose.x, nose.y, paddleWidth, paddleHeight);
   }
-}
     
   
   // Draw score
